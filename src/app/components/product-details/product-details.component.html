@@ -1,0 +1,30 @@
+<div class="product-details" *ngIf="product">
+  <img [src]="product.image" alt="{{ product.name }}">
+
+  <div class="product-info">
+    <div class="product-header">
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.price | currency : 'INR' }}</p>
+    </div>
+
+    <span class="stock-status">In Stock</span>
+    <div class="rating">★★★★☆ (4/5)</div>
+
+    <div class="quantity-control">
+      <button (click)="decreaseQuantity()" [disabled]="quantity === 1">-</button>
+      <input type="number" [(ngModel)]="quantity" min="1" disabled>
+      <button (click)="increaseQuantity()">+</button>
+    </div>
+
+    <div class="product-description">
+      <p>A burger is a patty of ground beef grilled and placed between two halves of a bun. Slices of raw onion,
+        lettuce, bacon, mayonnaise, and other ingredients add flavor. Burgers are considered an American food but are
+        popular around the world. In Japan, teriyaki burgers are popular.</p>
+    </div>
+
+    <button (click)="addToCart()" *ngIf="!isInCart(product.id)" class="add-to-cart">Add to Cart</button>
+    <button *ngIf="isInCart(product.id)" (click)="removeFromCart(product.id)" class="remove-to-cart">
+      Remove
+    </button>
+  </div>
+</div>

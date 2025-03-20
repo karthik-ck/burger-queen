@@ -1,0 +1,25 @@
+<div class="cart">
+  <div *ngFor="let item of cart" class="cart-item">
+    <img [src]="item.image" alt="{{ item.name }}" class="item-image">
+
+    <div class="item-details">
+      <h3>{{ item.name }}</h3>
+      <p>{{ (item.price * item.quantity) | currency : 'INR' }}</p>
+    </div>
+
+    <div class="quantity-control">
+      <button (click)="updateQuantity(item.id, -1)" [disabled]="item.quantity <= 1">-</button>
+      <span>{{ item.quantity }}</span>
+      <button (click)="updateQuantity(item.id, 1)">+</button>
+    </div>
+
+    <button (click)="removeItem(item.id)" class="remove-btn">✕</button>
+  </div>
+
+  <div class="cart-summary">
+    <p>Subtotal <span>{{ subtotal  | currency : 'INR' }}</span></p>
+    <p>Discount <span>- ₹0.00</span></p>
+    <p class="total">Total <span>{{ total  | currency : 'INR' }}</span></p>
+    <button class="buy-now-btn" (click)="buyNow()">Buy Now</button>
+  </div>
+</div>

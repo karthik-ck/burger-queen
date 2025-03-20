@@ -1,0 +1,77 @@
+<div class="container">
+  <header class="header">
+    <h2 class="title">Burger Queen</h2>
+    <button *ngIf="cartItemCount > 0" class="cart-btn" routerLink="/cart">
+      🛒 <span class="cart-badge">{{ cartItemCount }}</span>
+    </button>
+    
+  </header>
+
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="searchTerm" (input)="applySearch()" placeholder="Search Item..." />
+    <button class="search-btn">🔍</button>
+  </div>
+
+  <section *ngIf="popularItems.length">
+    <h3 class="section-title">Popular Items</h3>
+    <div class="product-list">
+      <div *ngFor="let product of popularItems" class="product-card">
+        <img [src]="product.image" alt="{{ product.name }}" />
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.price | currency : 'INR' }}</p>
+
+        <div class="button-group">
+          <button *ngIf="!isInCart(product.id)" (click)="addToCart(product)" class="add-to-cart">
+            Add to Cart
+          </button>
+          <button *ngIf="isInCart(product.id)" (click)="removeFromCart(product.id)">
+            Remove
+          </button>
+          <button (click)="viewDetails(product.id)" class="view-details">View Details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="specialOffers.length">
+    <h3 class="section-title">Special Offers</h3>
+    <div class="product-list">
+      <div *ngFor="let product of specialOffers" class="product-card">
+        <img [src]="product.image" alt="{{ product.name }}" />
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.price | currency : 'INR' }}</p>
+
+        <div class="button-group">
+          <button *ngIf="!isInCart(product.id)" (click)="addToCart(product)" class="add-to-cart">
+            Add to Cart
+          </button>
+          <button *ngIf="isInCart(product.id)" (click)="removeFromCart(product.id)">
+            Remove
+          </button>
+          <button (click)="viewDetails(product.id)" class="view-details">View Details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="newArrivals.length">
+    <h3 class="section-title">New Arrivals</h3>
+    <div class="product-list">
+      <div *ngFor="let product of newArrivals" class="product-card">
+        <img [src]="product.image" alt="{{ product.name }}" />
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.price | currency : 'INR' }}</p>
+
+        <div class="button-group">
+          <button *ngIf="!isInCart(product.id)" (click)="addToCart(product)" class="add-to-cart">
+            Add to Cart
+          </button>
+          <button *ngIf="isInCart(product.id)" (click)="removeFromCart(product.id)">
+            Remove
+          </button>
+          <button (click)="viewDetails(product.id)" class="view-details">View Details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
