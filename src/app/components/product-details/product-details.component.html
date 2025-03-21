@@ -22,9 +22,12 @@
         popular around the world. In Japan, teriyaki burgers are popular.</p>
     </div>
 
-    <button (click)="addToCart()" *ngIf="!isInCart(product.id)" class="add-to-cart">Add to Cart</button>
-    <button *ngIf="isInCart(product.id)" (click)="removeFromCart(product.id)" class="remove-to-cart">
-      Remove
-    </button>
+    <div class="button-container">
+      <button (click)="addToCart()" *ngIf="!isInCart(product.id)" class="add-to-cart">Add to Cart</button>
+      <button *ngIf="isInCart(product.id)" (click)="removeFromCart(product.id)" class="remove-to-cart">
+        Remove
+      </button>
+      <button class="remove-to-cart" (click)="goBack()" style="background:#ffa500;border-color:#ffa500 ;">Back</button>
+    </div>
   </div>
 </div>

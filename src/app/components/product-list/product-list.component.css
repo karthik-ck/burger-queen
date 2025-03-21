@@ -42,7 +42,7 @@
   align-items: center;
   background: #fff;
   margin: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #ffcc00;
   border-radius: 8px;
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -99,6 +99,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-top:10px;
 }
 
 .add-to-cart {

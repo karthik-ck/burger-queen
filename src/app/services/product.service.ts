@@ -19,7 +19,6 @@ export class ProductService {
     { id: 11, name: 'Truffle Cheese Burger', price: 500, quantity: 1, image: 'assets/image-11.jpg' },
     { id: 12, name: 'Zesty Lamb Burger', price: 370, quantity: 1, image: 'assets/image-12.jpg' }
   ];
-  
 
   getProducts() {
     return this.products;
